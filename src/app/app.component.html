@@ -1,0 +1,89 @@
+<div class="container">
+    <br />
+    <br />
+
+
+  <h1>
+      United Airlines Simple Search  
+  </h1>
+
+
+
+  <form [formGroup]="angularForm" novalidate>
+    <div class="form-group">
+      <label>Flight Number: <input class="form-control" formControlName="flightNumber" type="text"></label>
+      <br />
+      <br />
+      <label>Origin Port: <input class="form-control" formControlName="origin" type="text"></label>
+      <br />
+      <br /> <label>Destination Port: <input class="form-control" formControlName="destination" type="text"></label>
+      <br />
+      <br />  <label>Arrival/Departure Date* : <input class="form-control" formControlName="fdate" type="date"></label>
+
+
+
+
+
+    </div>
+    <br />
+
+    <button (click)="get_flights()"  class="btn btn-success">
+      Search
+    </button>
+
+
+    <br />
+    <br />
+
+    <div class="alert alert-warning"> {{message}} </div>
+    <br />
+    <br />
+
+
+
+  </form>
+  <br />
+
+
+
+  <div *ngIf="flights?.length > 0">
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>
+            Flight #
+          </th>
+          <th>
+            Carrier
+          </th>
+          <th>Origin </th>
+          <th>Destination </th>
+          <th>Travel time</th>
+
+          <th>Status </th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of flights  ">
+
+          <td>
+            {{flight.flightNumber}}
+          </td>
+          <td>
+            {{flight.carrier}}
+          </td>
+          <td> {{flight.origin}} </td>
+          <td> {{flight.destination}} </td>
+          <td> {{flight.departure}}  - {{flight.arrival}} </td>
+          <td> {{flight.status}} </td>
+
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+</div>
